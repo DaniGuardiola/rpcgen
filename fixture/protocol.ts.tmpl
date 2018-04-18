@@ -14,8 +14,15 @@ export class {{ util.makeUpperCamelCase(name, "-") }} {
     constructor(){
     }
 {% for i in request %}
-    {{ i.corder.functionName() }}(): {{i.corder.declareType() | safe}} {
+    {{ i.corder.functionName() }}(
+{%- for j in i.storage %}
+        {{j.name}}: {{j.corder.declareType() | safe}}
+{%- endfor %}
+    ): Promise<{{i.corder.declareType() | safe}}> {
         return this.request("{{ i.name }}", [
+{%- for j in i.storage %}
+            {{j.name}}
+{%- endfor %}
         ])
     }
 {% endfor %}
