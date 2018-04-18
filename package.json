@@ -1,0 +1,23 @@
+{
+  "name": "rpcgen",
+  "version": "1.0.0",
+  "description": "rpc generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/you21979/rpcgen.git"
+  },
+  "author": "Yuki Akiyama",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/you21979/rpcgen/issues"
+  },
+  "homepage": "https://github.com/you21979/rpcgen#readme",
+  "dependencies": {
+    "nunjucks": "^3.1.2",
+    "xml-js": "^1.6.2"
+  }
+}
