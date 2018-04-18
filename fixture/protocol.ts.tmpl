@@ -1,0 +1,12 @@
+export class {{ name.replace("-", "_") }} {
+    static version: string = "{{ version }}"
+    constructor(){
+    }
+{% for i in request %}
+    {{ i.functionName() }}(): {{i.functionType()}} {
+        return this.request("{{ i.name }}", [
+        ])
+    }
+{% endfor %}
+}
+

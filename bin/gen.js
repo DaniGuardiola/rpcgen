@@ -1,10 +1,11 @@
+#!/usr/bin/env node
 const App = require("../lib/app")
 
 const main = () => {
 
-    const x = new App("./protocol.xml")
-    x.parse()
-    const o = x.build("./protocol.ts.tmpl")
+    const app = new App("./fixture/protocol.xml")
+    app.parse()
+    const o = app.build("./fixture/protocol.ts.tmpl")
     console.log(o)
 }
 
