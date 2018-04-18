@@ -3,7 +3,7 @@ export class {{ name.replace("-", "_") }} {
     constructor(){
     }
 {% for i in request %}
-    {{ i.functionName() }}(): {{i.functionType()}} {
+    {{ i.corder.functionName() }}(): {{i.corder.declareType() | safe}} {
         return this.request("{{ i.name }}", [
         ])
     }
