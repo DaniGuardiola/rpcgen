@@ -1,3 +1,14 @@
+
+{% for i in struct %}
+
+interface {{ i.corder.declareType() }}{
+    {%- for j in i.storage %}
+    {{ j.name }} : {{ j.corder.declareType() }}
+    {%- endfor %}
+}
+
+{% endfor %}
+
 export class {{ name.replace("-", "_") }} {
     static version: string = "{{ version }}"
     constructor(){
