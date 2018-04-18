@@ -9,7 +9,7 @@ interface {{ i.corder.declareType() }}{
 
 {% endfor %}
 
-export class {{ name.replace("-", "_") }} {
+export class {{ util.makeUpperCamelCase(name, "-") }} {
     static version: string = "{{ version }}"
     constructor(){
     }
