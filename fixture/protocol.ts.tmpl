@@ -1,30 +1,42 @@
+import {Client} from './client'
 
-{% for i in struct %}
-
-interface {{ i.corder.declareType() }}{
-    {%- for j in i.storage %}
-    {{ j.name }} : {{ j.corder.declareType() }}
-    {%- endfor %}
+// this file is auto generated.
+export document = {
+    hash : "{{ document.hash }}"
 }
 
+{% for i in struct %}
+{% set ts = i.code(coder.typescript) %}
+// {{ i.desc }}
+export interface {{ ts.struct_name }} {
+    {{ ts.struct_params.join('\n    ') }}
+}
 {% endfor %}
 
-export class {{ util.makeUpperCamelCase(name, "-") }} {
+export class {{ util.makeUpperCamelCase(name, "-") }} extends Client{
     static version: string = "{{ version }}"
-    constructor(){
+    constructor(port, host, protocol, options){
+        super(port, host, protocol, options)
     }
-{% for i in request %}
-    {{ i.corder.functionName() }}(
-{%- for j in i.storage %}
-        {{j.name}}: {{j.corder.declareType() | safe}}
-{%- endfor %}
-    ): Promise<{{i.corder.declareType() | safe}}> {
-        return this.request("{{ i.name }}", [
-{%- for j in i.storage %}
-            {{j.name}}
-{%- endfor %}
-        ])
+{%- for i in request -%}
+{%- if i.dir === 0 -%}
+    {% set ts = i.code(coder.typescript) %}
+    // {{ i.desc }}
+    public {{ ts.func_name }} ( {{ ts.func_params.join(", ") }} ): Promise<{{ ts.func_return | safe}}> {
+        return this.request("{{ i.name }}", [ {{ ts.params.join(", ") }} ])
     }
-{% endfor %}
+{%- endif -%}
+{%- endfor %}
+
+    onClose(): void{
+        super.onClose()
+        const list = []
+{%- for i in notification -%}
+{% if i.dir === 1 %}
+        list.push("{{ i.name }}")
+{%- endif -%}
+{%- endfor %}
+        list.forEach(event => this.subscribe.removeAllListeners(event))
+    }
 }
 
