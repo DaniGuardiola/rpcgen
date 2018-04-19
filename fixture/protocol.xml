@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<idl name="electrum-protocol" version="0.9">
+<idl name="electrum-protocol_v1" version="0.9">
 
 	<!-- struct -->
 	<struct name="coin_balance">
@@ -21,7 +21,7 @@
 
 	<request name="server.version" dir="client" result="string">
 		<param name="client_version" type="string" desc=""/>
-		<param name="protocol_version" type="string" desc=""/>
+		<param name="protocol_version" type="string" default="'0.9'" desc=""/>
 	</request>
 
 	<request name="server.banner" dir="client" result="string"/>
