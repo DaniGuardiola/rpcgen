@@ -23,5 +23,8 @@
   },
   "bin": {
     "rpcgen": "./bin/gen.js"
+  },
+  "devDependencies": {
+    "standard": "^11.0.1"
   }
 }
