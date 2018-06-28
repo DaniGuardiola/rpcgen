@@ -2,10 +2,7 @@
   "name": "rpcgen",
   "version": "1.0.0",
   "description": "rpc generator",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "gen.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/you21979/rpcgen.git"
@@ -26,5 +23,8 @@
   },
   "devDependencies": {
     "standard": "^11.0.1"
+  },
+  "scripts": {
+    "lint": "standard"
   }
 }

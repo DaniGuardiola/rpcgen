@@ -1,5 +1,5 @@
+const util = require('../lib/util')
 const entity = require('./entity')
-const util = require('./util')
 const typescript = require('./coder-typescript').typeScript
 
 class IDL {

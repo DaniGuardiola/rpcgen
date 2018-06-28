@@ -10,8 +10,8 @@ export const document = {
 {% for i in struct %}
 {% set ts = i.code(coder.typescript) %}
 // {{ i.desc }}
-export interface {{ ts.struct_name }} {
-  {{ ts.struct_params.join('\n    ') | safe }}
+export interface {{ ts.structName }} {
+  {{ ts.structParams.join('\n    ') | safe }}
 }
 {% endfor %}
 
@@ -24,7 +24,7 @@ export class {{ util.toUpperCamelCase(name, "-") }} extends Client{
 {%- if i.dir === 0 -%}
   {% set ts = i.code(coder.typescript) %}
   // {{ i.desc }}
-  public {{ ts.func_name }} ( {{ ts.func_params.join(", ") | safe}} ): Promise<{{ ts.func_return | safe}}> {
+  public {{ ts.funcName }} ( {{ ts.funcParams.join(", ") | safe}} ): Promise<{{ ts.funcReturn | safe}}> {
     return this.request("{{ i.name }}", [ {{ ts.params.join(", ") }} ])
   }
 {%- endif -%}

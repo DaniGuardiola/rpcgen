@@ -1,4 +1,4 @@
-const util = require('./util')
+const util = require('../lib/util')
 
 const PRIMITIVE_TYPES = {
   object: 'object',

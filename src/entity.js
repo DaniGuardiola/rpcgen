@@ -1,4 +1,4 @@
-const Param = require('./param')
+const Param = require('../lib/param')
 
 const DIRECTION_TYPE = {
   CLIENT: 0,
