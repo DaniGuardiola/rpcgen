@@ -20,5 +20,8 @@
     "commander": "^2.15.1",
     "nunjucks": "^3.1.2",
     "xml-js": "^1.6.2"
+  },
+  "bin": {
+    "rpcgen": "./bin/gen.js"
   }
 }
